@@ -1,0 +1,11 @@
+# O server.js so serve para plataformas que hospedam processo (Render, Railway,
+# Fly, Discloud). No Vercel ele nao deve ir junto: empacotado como serverless
+# function, ele roda com ROOT = __dirname apontando para dentro do bundle, onde
+# os arquivos estaticos nao existem — e ai o site inteiro responde 404.
+server.js
+
+# Originais de 1,2 MB que a pagina nao carrega. Ficam versionados no
+# repositorio, mas nao ha motivo para publica-los.
+assets/img/source/
+
+README.md

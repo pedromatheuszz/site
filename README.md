@@ -273,6 +273,33 @@ Por ser um site estático, qualquer uma destas opções serve — todas gratuita
 
 Nenhuma exige etapa de build.
 
+### Vercel: não deixe o `server.js` subir junto
+
+O `server.js` só serve para plataformas que hospedam **processo** (Render,
+Railway, Fly, Discloud). Se ele for junto para o Vercel, a plataforma pode
+empacotá-lo como serverless function — e aí o site inteiro responde 404.
+
+O motivo é o `ROOT = __dirname`: dentro do bundle da function, `__dirname` não
+é a raiz do repositório, e os arquivos estáticos não estão lá. O sintoma é
+peculiar e ajuda a reconhecer o problema:
+
+| Caminho | Resposta | Por quê |
+|---------|----------|---------|
+| `/index.html`, `/assets/**` | 404 | `fs.stat` não acha o arquivo no bundle |
+| `/server.js`, `/.gitignore` | 403 | `isBlocked()` é lógica de string e nem toca no disco |
+
+Um 403 nesses dois caminhos é a assinatura de que o `server.js` está rodando
+onde não devia — hospedagem estática nunca responderia 403 neles.
+
+Por isso o repositório tem `.vercelignore` excluindo `server.js` (e os originais
+em `assets/img/source/`), e `vercel.json` fixando `framework: null` e
+`outputDirectory: "."`, além de repor os cabeçalhos de segurança que o
+`server.js` enviava.
+
+**Uma coisa o `vercel.json` não controla:** o *Root Directory* do projeto, que
+só existe no painel do Vercel. Ele precisa estar vazio ou `.` — se apontar para
+uma subpasta, tudo volta a dar 404.
+
 ---
 
 ## Acessibilidade e SEO já implementados
