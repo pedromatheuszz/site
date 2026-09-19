@@ -80,7 +80,7 @@ Todos os links de projeto abrem em nova aba e precisam de `rel="noopener"`.
 ### 1. Domínio
 
 `canonical`, `og:url` e `og:image` apontam para
-`https://pedromatheus-dev-three.vercel.app/`. Se registrar um domínio próprio,
+`https://pedromatheus.vercel.app/`. Se registrar um domínio próprio,
 troque **os três** no `<head>` — o `og:image` é fácil de esquecer porque o
 caminho dele mudou para `/assets/img/og-image.png` quando os arquivos foram
 organizados em pastas. Ele precisa ser absoluto: crawlers de WhatsApp e
