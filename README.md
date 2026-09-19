@@ -64,8 +64,11 @@ escritas a partir do que está nos repositórios:
 | Card | Repositório |
 |------|-------------|
 | Adri Poltronas | `pedromatheuszz/Adri-Poltronas` |
+| Dev Hub | `pedromatheuszz/dev-hub` |
 | Routine | `pedromatheuszz/Routine` |
-| pedromatheus.dev | `pedromatheuszz/pedromatheus-dev` |
+
+Os três repositórios precisam continuar **públicos**: o botão "Ver no GitHub"
+de um repositório privado leva o visitante a um 404.
 
 Para adicionar um projeto, duplique o bloco `<article class="work">` inteiro —
 o grid se ajusta sozinho. As capas usam três variantes de cor:
